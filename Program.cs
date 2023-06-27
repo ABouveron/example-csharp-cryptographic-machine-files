@@ -43,7 +43,7 @@ public class Program
     }
     catch (JsonException e)
     {
-      Console.WriteLine($"Failed to parse license file: {e.Message}");
+      Console.WriteLine($"Failed to parse machine file: {e.Message}");
 
       return;
     }
@@ -65,7 +65,7 @@ public class Program
 
     if (ed25519.Verify(key, signingDataBytes, signatureBytes))
     {
-      Console.WriteLine("License file is valid! Decrypting...");
+      Console.WriteLine("Machine file is valid! Decrypting...");
 
       // Decrypt license file dataset
       var plaintext = "";
@@ -115,17 +115,17 @@ public class Program
       }
       catch (Exception e)
       {
-        Console.WriteLine($"Failed to decrypt license file: {e.Message}");
+        Console.WriteLine($"Failed to decrypt machine file: {e.Message}");
 
         return;
       }
 
-      Console.WriteLine("License file was successfully decrypted!");
+      Console.WriteLine("Machine file was successfully decrypted!");
       Console.WriteLine($"Decrypted: {plaintext}");
     }
     else
     {
-      Console.WriteLine("Invalid license file!");
+      Console.WriteLine("Invalid machine file!");
     }
   }
 }
